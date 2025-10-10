@@ -1,6 +1,5 @@
-import { StyleSheet, FlatList, View, Text } from "react-native";
+import { StyleSheet, FlatList, View, Text  } from "react-native";
 
-//Fazer o import o Text
 
 export default function Flat(){
     const lista =[
@@ -20,7 +19,7 @@ export default function Flat(){
 
     return(
 
-        <View>
+        <View style = {styles.container}>
             <FlatList
             data={lista}
             renderItem={({item}) => <Pessoa data={item}/>}
@@ -32,10 +31,32 @@ export default function Flat(){
 
 function Pessoa({data}){
     return(
-    <View>
-        <Text> id: {data.id}</Text>
-        <Text>Nome: {data.nome}</Text>
-        <Text>Email: {data.email}</Text>
+    <View style ={styles.containerPessoa}>
+        <View style = {styles.subContainer}>
+            <Text style = {styles.textoPessoa}> id: {data.id}</Text>
+            <Text style = {styles.textoPessoa}>Nome: {data.nome}</Text>
+            <Text style = {styles.textoPessoa}>Email: {data.email}</Text>
+        </View>
     </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex: 1
+    },
+    containerPessoa:{
+        backgroundColor: '#222',
+        height: 150,
+
+    },
+    textoPessoa:{
+        color: 'white',
+        fontSize: 26
+    },
+    subContainer:{
+        borderWidth: 1,
+        borderColor: 'gray',
+        borderRadius: 10
+    }
+});
